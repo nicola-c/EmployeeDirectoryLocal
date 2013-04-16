@@ -64,7 +64,8 @@ function populateDB(tx) {
 		"email VARCHAR(30), " +
 		"picture VARCHAR(200))";
     tx.executeSql(sql);
-	for (int i=0;i<100;i++)
+	var i=0;
+	for (i=0;i<100;i++)
 	{
 		var offs = 12*i;
 		tx.executeSql("INSERT INTO employee (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (" + (12 + offs) + ",'Steven','Wells',4,'Software Architect','Engineering','617-000-0012','781-000-0012','swells@fakemail.com','Boston, MA','steven_wells.jpg')");
