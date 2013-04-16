@@ -4,7 +4,7 @@ var dbCreated = false;
 var scroll = new iScroll('wrapper', { vScrollbar: false, hScrollbar:false, hScroll: false });
 
 document.addEventListener("deviceready", onDeviceReady, false);
-var scanner; // = window.PhoneGap.require("cordova/plugin/BarcodeScanner");
+
 
 function onDeviceReady() {
     db = window.openDatabase("EmployeeDirectoryDB", "1.0", "PhoneGap Demo", 200000);
@@ -13,10 +13,7 @@ function onDeviceReady() {
     else
     	db.transaction(populateDB, transaction_error, populateDB_success);
 		
-	scanner = window.PhoneGap.require("cordova/plugin/BarcodeScanner");
-	$('#scan').bind('touchstart',function() {
-		scanner.scan( function (result) { alert("We got a barcode\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " + result.cancelled); }, function (error) { alert("Scanning failed: " + error); } );	
-	});
+
 }
 
 function transaction_error(tx, error) {
