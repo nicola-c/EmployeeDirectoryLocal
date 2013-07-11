@@ -5,7 +5,7 @@ var id = getUrlVars()["id"];
 var db;
 
 document.addEventListener("deviceready", onDeviceReady, false);
-var scanner= window.PhoneGap.require("cordova/plugin/BarcodeScanner");
+//var scanner= window.PhoneGap.require("cordova/plugin/BarcodeScanner");
 
 function onDeviceReady() {
 	console.log("opening database");
@@ -13,10 +13,10 @@ function onDeviceReady() {
 	console.log("database opened");
     db.transaction(getEmployee, transaction_error);
 	
-	//scanner = window.PhoneGap.require("cordova/plugin/BarcodeScanner");
+
 	$('.scan').bind('click',function() {
 		alert("click");
-		scanner.scan( function (result) { alert("We got a barcode\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " + result.cancelled); }, function (error) { alert("Scanning failed: " + error); } );	
+	//	scanner.scan( function (result) { alert("We got a barcode\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " + result.cancelled); }, function (error) { alert("Scanning failed: " + error); } );	
 	});	
 }
 
