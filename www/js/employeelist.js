@@ -27,9 +27,12 @@ function populateDB_success() {
 }
 
 function getEmployees(tx) {
-	var sql = "select e.id, e.firstName, e.lastName, e.title, e.picture, count(r.id) reportCount " + 
-				"from employee e left join employee r on r.managerId = e.id " +
-				"group by e.id order by e.id limit 25 offset 30000";
+	//var sql = "select e.id, e.firstName, e.lastName, e.title, e.picture, count(r.id) reportCount " + 
+	//			"from employee e left join employee r on r.managerId = e.id " +
+	//			"group by e.id order by e.id limit 25 offset 30000";
+	var sql = "select e.id, e.firstName, e.lastName, e.title, e.picture " + 
+				"from employee e " +
+				"order by e.id limit 25 offset 30000";
 	tx.executeSql(sql, [], getEmployees_success);
 }
 
@@ -42,7 +45,8 @@ function getEmployees_success(tx, results) {
 				'<img src="pics/' + employee.picture + '" class="list-icon"/>' +
 				'<p class="line1">' + employee.firstName + ' ' + employee.lastName + '</p>' +
 				'<p class="line2">' + employee.title + '</p>' +
-				'<span class="bubble">' + employee.reportCount + '</span></a></li>');
+				'<span class="bubble">0</span></a></li>');
+				//'<span class="bubble">' + employee.reportCount + '</span></a></li>');
     }
 	setTimeout(function(){
 		scroll.refresh();
