@@ -1,5 +1,5 @@
 var db;
-var dbCreated = false;
+var dbCreated = true;
 
 var scroll = new iScroll('wrapper', { vScrollbar: false, hScrollbar:false, hScroll: false });
 
@@ -29,7 +29,7 @@ function populateDB_success() {
 function getEmployees(tx) {
 	var sql = "select e.id, e.firstName, e.lastName, e.title, e.picture, count(r.id) reportCount " + 
 				"from employee e left join employee r on r.managerId = e.id " +
-				"group by e.id order by e.lastName, e.firstName limit 25 offset 30000";
+				"group by e.id order by e.id limit 25 offset 30000";
 	tx.executeSql(sql, [], getEmployees_success);
 }
 
