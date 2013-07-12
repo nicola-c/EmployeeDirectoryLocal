@@ -29,7 +29,7 @@ function populateDB_success() {
 function getEmployees(tx) {
 	var sql = "select e.id, e.firstName, e.lastName, e.title, e.picture, count(r.id) reportCount " + 
 				"from employee e left join employee r on r.managerId = e.id " +
-				"group by e.id order by e.lastName, e.firstName";
+				"group by e.id order by e.lastName, e.firstName limit 25 offset 300";
 	tx.executeSql(sql, [], getEmployees_success);
 }
 
