@@ -7,7 +7,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 
 function onDeviceReady() {
-    db = window.openDatabase("EmployeeDirectoryDB", "1.0", "PhoneGap Demo", 5000000);
+    db = window.openDatabase("EmployeeDirectoryDB", "1.0", "PhoneGap Demo", 3000000);
     if (dbCreated)
     	db.transaction(getEmployees, transaction_error);
     else
@@ -29,7 +29,7 @@ function populateDB_success() {
 function getEmployees(tx) {
 	var sql = "select e.id, e.firstName, e.lastName, e.title, e.picture, count(r.id) reportCount " + 
 				"from employee e left join employee r on r.managerId = e.id " +
-				"group by e.id order by e.lastName, e.firstName limit 25 offset 300";
+				"group by e.id order by e.lastName, e.firstName limit 25 offset 30000";
 	tx.executeSql(sql, [], getEmployees_success);
 }
 
