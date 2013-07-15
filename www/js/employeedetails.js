@@ -31,6 +31,7 @@ function getEmployee(tx) {
 				"e.email, e.picture, m.firstName managerFirstName, m.lastName managerLastName, count(r.id) reportCount " +
 				"from employee e left join employee r on r.managerId = e.id left join employee m on e.managerId = m.id " +
 				"where e.id=:id group by e.lastName order by e.lastName, e.firstName";
+
 	tx.executeSql(sql, [id], getEmployee_success);
 }
 
